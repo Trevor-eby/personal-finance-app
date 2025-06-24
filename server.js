@@ -13,6 +13,12 @@ app.use(express.json());
 // Routes
 app.get('/', (req, res) => res.send('API is running!'));
 
+// Auth
+const authRoutes = require('./server/routes/auth');
+
+app.use('/api', authRoutes);
+
+
 // DB Connection Test
 const db = require('./server/models');
 
