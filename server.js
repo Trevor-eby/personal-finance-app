@@ -10,22 +10,24 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Routes
+// Basic test route
 app.get('/', (req, res) => res.send('API is running!'));
 
-// Auth
+// Auth routes
 const authRoutes = require('./server/routes/auth');
-
 app.use('/api', authRoutes);
 
+// Transaction routes
+const transactionRoutes = require('./server/routes/transactions');
+app.use('/api/transactions', transactionRoutes);
 
-// DB Connection Test
+// DB Connection and sync
 const db = require('./server/models');
 
 sequelize.authenticate()
   .then(() => {
     console.log('✅ PostgreSQL connected');
-    return db.sequelize.sync(); // <- sync models
+    return db.sequelize.sync(); // sync models
   })
   .then(() => {
     console.log('✅ All models synced');
