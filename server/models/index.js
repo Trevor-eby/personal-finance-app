@@ -8,6 +8,8 @@ db.sequelize = sequelize;
 
 db.User = require('./user')(sequelize, Sequelize.DataTypes);
 db.Transaction = require('./transactions')(sequelize, Sequelize.DataTypes);
+db.Budget = require('./budget')(sequelize, Sequelize.DataTypes);
+
 
 // Set associations
 Object.keys(db).forEach(modelName => {

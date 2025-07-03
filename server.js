@@ -21,6 +21,11 @@ app.use('/api', authRoutes);
 const transactionRoutes = require('./server/routes/transactions');
 app.use('/api/transactions', transactionRoutes);
 
+// Budget routes
+const budgetRoutes = require('./server/routes/budgets');
+app.use('/api/budgets', budgetRoutes);
+
+
 // DB Connection and sync
 const db = require('./server/models');
 
